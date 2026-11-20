@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCN Bus Nav - Guía de Ayuda e Inicio Rápido</title>
+    <style>
+        :root {
+            --bg-deep: #0B132B;
+            --bg-dark: #0F172A;
+            --card-bg: rgba(30, 41, 59, 0.75);
+            --card-border: rgba(245, 158, 11, 0.25);
+            --gold-primary: #F59E0B;
+            --gold-light: #FBBF24;
+            --gold-dark: #D97706;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --blue-accent: #2563EB;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-dark), var(--bg-deep));
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 24px 16px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(11, 19, 43, 0.9));
+            border: 1.5px solid var(--card-border);
+            border-radius: 24px;
+            padding: 28px 24px;
+            text-align: center;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(12px);
+        }
+
+        .logo-badge {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary), var(--gold-dark));
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin-bottom: 16px;
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 28px 0 16px 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gold-primary);
+        }
+
+        /* Cards Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(245, 158, 11, 0.5);
+        }
+
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(245, 158, 11, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: var(--gold-primary);
+        }
+
+        .card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Steps Timeline */
+        .steps-container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 16px;
+            position: relative;
+            padding-bottom: 24px;
+        }
+
+        .step-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .step-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 19px;
+            top: 40px;
+            bottom: 0;
+            width: 2px;
+            background: rgba(245, 158, 11, 0.3);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+            color: var(--bg-deep);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .step-content p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* FAQ Accordion / Cards */
+        .faq-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+        }
+
+        .faq-card h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .faq-card p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 24px;
+            color: var(--text-muted);
+            font-size: 13px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 32px;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+            color: var(--bg-deep);
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 14px;
+            text-decoration: none;
+            margin-top: 12px;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            transition: transform 0.2s ease;
+        }
+
+        .contact-btn:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header Banner -->
+        <div class="header">
+            <div class="logo-badge">🚏</div>
+            <h1>BCN Bus Nav</h1>
+            <p>Guía de Inicio Rápido y Funcionamiento de la Aplicación</p>
+        </div>
+
+        <!-- Funciones Clave -->
+        <h2 class="section-title">✨ Funcionalidades Principales</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">🚌</div>
+                <h3>Líneas y Recorridos</h3>
+                <p>Selecciona cualquier línea de autobús urbano de Barcelona y consulta su trazado exacto en el mapa.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🚏</div>
+                <h3>Buscador de Paradas</h3>
+                <p>Filtra las paradas por nombre o código en tiempo real dentro del panel de información de línea.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🧭</div>
+                <h3>Modo Navegación GPS</h3>
+                <p>Activa el modo seguimiento con bloqueo de cámara y alertas sonoras de aproximación a parada.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">⚙️</div>
+                <h3>Ajustes Personalizados</h3>
+                <p>Configura el modo nocturno, tamaño de marcas, grosor de línea y colores de trayecto a tu gusto.</p>
+            </div>
+        </div>
+
+        <!-- Paso a Paso -->
+        <h2 class="section-title">🚀 Cómo Empezar en 4 Pasos</h2>
+        <div class="steps-container">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Seleccionar una Línea</h4>
+                    <p>Pulsa el botón flotante con el icono de autobús (🚌) en la esquina inferior para abrir el panel de líneas y elegir tu ruta.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Elegir Dirección e Inspeccionar Paradas</h4>
+                    <p>Selecciona el sentido de trayecto (Ida, Vuelta o Ambos) y pulsa la tarjeta superior para ver la lista de paradas y buscar la tuya.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Activar el Modo Navegación</h4>
+                    <p>Pulsa el botón de navegación (🧭) para activar el seguimiento en tiempo real con la cámara bloqueada en tu posición GPS.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h4>Personalizar Ajustes y Notificaciones</h4>
+                    <p>Accede al icono de engranaje (⚙️) en la barra superior para activar sonidos, modo nocturno o ajustar la apariencia visual.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preguntas Frecuentes -->
+        <h2 class="section-title">❓ Preguntas Frecuentes</h2>
+        <div class="faq-card">
+            <h4>¿Es necesaria una conexión a Internet?</h4>
+            <p>Se requiere conexión la primera vez que abres la app para descargar la red de transporte de Barcelona. Posteriormente, la app optimiza el uso de datos locales.</p>
+        </div>
+        <div class="faq-card">
+            <h4>¿Cómo funciona la alerta de proximidad a parada?</h4>
+            <p>Al estar en Modo Navegación activo con los sonidos habilitados en Ajustes, la app emitirá un tono cuando estés cerca de la parada objetivo.</p>
+        </div>
+        <div class="faq-card">
+            <h4>¿Qué ventajas ofrece la versión Premium?</h4>
+            <p>Desbloquea el modo navegación asistida continua, personalización de colores de ida/vuelta, modo nocturno avanzado y soporte prioritario.</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>¿Tienes alguna sugerencia o consulta sobre la app?</p>
+            <a href="mailto:exhowi72@gmail.com?subject=Consulta%20BCN%20Bus%20Nav" class="contact-btn">
+                ✉️ Enviar Sugerencia por Correo
+            </a>
+            <p style="margin-top: 16px;">BCN Bus Nav &copy; 2026</p>
+        </div>
+    </div>
+
+</body>
+</html>
